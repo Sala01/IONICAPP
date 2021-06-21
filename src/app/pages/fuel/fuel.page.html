@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-toolbar color="favorite">
+        <ion-title>Registro de Combustible</ion-title>
+        <ion-button fill="clear" (click)="presentAlert()" slot="end" color='dark'>
+            <ion-icon name="exit"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="openmenu('first')" slot="start" color='dark'>
+            <ion-icon name="menu"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="paso">
+    <ion-item>
+        <ion-label class="ion-text-wrap ion-text-center">Presiona la siguiente imagen para leer el código QR de la maquina</ion-label>
+    </ion-item>
+
+    <ion-row class="ion-justify-content-center">
+        <ion-col size="6" class="ion-text-center">
+            <ion-icon name="qr-code" class="qricon" (click)="initscan()"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+<ion-content *ngIf="paso2">
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Registro de Servicio</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-label>Clave: {{ codigoequipo }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Nombre: {{ nombreequippo }}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label position='stacked'>Horómetro:</ion-label>
+            <ion-input [(ngModel)]="horometro" type="number" placeholder="Captura el horómetro de la maquinaria"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position='stacked'>Litros:</ion-label>
+            <ion-input [(ngModel)]="litros" type="number" placeholder="Captura los litros de gasolina"></ion-input>
+        </ion-item>
+
+        <ion-grid>
+            <ion-row class="ion-text-center">
+                <ion-col>Medidor de combustible Inicial</ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center">
+                <ion-col>
+                    <ion-img [src]="imagen"></ion-img>
+                </ion-col>
+                <ion-col>
+                    <ion-row class='ion-no-padding'>
+                        <ion-col class='ion-no-padding'>
+                            <ion-button color='light' (click)="camimg(1)">
+                                <ion-icon name="arrow-up"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class='ion-no-padding'>
+                        <ion-col class='ion-no-padding'>
+                            <ion-button color='light' (click)="camimg(-1)">
+                                <ion-icon name="arrow-down"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+            <ion-row class="ion-text-center">
+                <ion-col>Medidor de combustible Final</ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center">
+                <ion-col>
+                    <ion-img [src]="imagen2"></ion-img>
+                </ion-col>
+                <ion-col>
+                    <ion-row class='ion-no-padding'>
+                        <ion-col class='ion-no-padding'>
+                            <ion-button color='light' (click)="camimg2(1)">
+                                <ion-icon name="arrow-up"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class='ion-no-padding'>
+                        <ion-col class='ion-no-padding'>
+                            <ion-button color='light' (click)="camimg2(-1)">
+                                <ion-icon name="arrow-down"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+</ion-content>
+
+<ion-content *ngIf="paso3">
+    <ion-list>
+        <ion-item>
+            <p>Registro de Combustible exitoso del equipo "{{ nombreequippo }}" ({{ codigoequipo }}) para Número de Obra "{{ clabe }}" de " {{ nombreobra }} " del dia {{ fecha }} a las {{ hora }}.</p>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer no-shadow>
+    <ion-toolbar position="bottom">
+        <ion-button *ngIf="paso2" color="success" expand="block" (click)="save()">Registro Consumo</ion-button>
+        <ion-button *ngIf="paso3" color="medium" expand="block" (click)="cerrar()">Cerrar</ion-button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "440745722601",
+    "firebase_url": "https://operadores-8cd0f.firebaseio.com",
+    "project_id": "operadores-8cd0f",
+    "storage_bucket": "operadores-8cd0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440745722601:android:181cd2bcc3b4af468fa678",
+        "android_client_info": {
+          "package_name": "com.neoteck.maqinvent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440745722601-4p2fr98981a91iblftpblhhager14fkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDsd8iXagiUKXS93XXi4eg_S8Ku5NfE08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440745722601-4p2fr98981a91iblftpblhhager14fkb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "440745722601-aebovmet51d6o4mkecb5ovta8o2j2127.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.neoteck.maqinvent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>440745722601-aebovmet51d6o4mkecb5ovta8o2j2127.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.440745722601-aebovmet51d6o4mkecb5ovta8o2j2127</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCfU_AmWC47S2z693jlz8cJ7vVF-4bEu9o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>440745722601</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.neoteck.maqinvent</string>
+	<key>PROJECT_ID</key>
+	<string>operadores-8cd0f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>operadores-8cd0f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:440745722601:ios:923594a1def00ed38fa678</string>
+	<key>DATABASE_URL</key>
+	<string>https://operadores-8cd0f.firebaseio.com</string>
+</dict>
+</plist>

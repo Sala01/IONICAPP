@@ -1,0 +1,7 @@
+{
+  "name": "maquinvent",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

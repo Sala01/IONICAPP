@@ -1,0 +1,41 @@
+<ion-app>
+    <ion-menu side="start" menuId="first" contentId="main">
+        <ion-header>
+            <ion-toolbar color="dark">
+                <ion-title>Menú</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list id='item-menu'>
+                <ion-item (click)="navigate('home')">
+                    <ion-icon slot="start" color='dark' name="home"></ion-icon>Inicio</ion-item>
+                <ion-item (click)="navigate('operation')">
+                    <ion-icon slot="start" color='dark' name="time"></ion-icon>Operación Diaria</ion-item>
+                <ion-item (click)="navigate('maintenance')">
+                    <ion-icon slot="start" color='dark' name="build"></ion-icon>Servicios</ion-item>
+                <ion-item (click)="navigate('maintenance2')">
+                    <ion-icon slot="start" color='dark' name="medkit"></ion-icon>Composturas y Arreglos</ion-item>
+                <ion-item (click)="navigate('fuel')">
+                    <ion-icon slot="start" color='dark' name="car"></ion-icon>Registro de Combustible</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-menu side="end" menuId="sesion" contentId="main2">
+        <ion-header>
+            <ion-toolbar color="dark">
+                <ion-button fill="clear" slot="start" color='light'>
+                    <ion-icon name="person"></ion-icon>
+                </ion-button>
+                <ion-title>{{ nombre }}</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list id='item-menu'>
+                <ion-item (click)="logout()">Cerrar Sesión</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet></ion-router-outlet>
+    <ion-router-outlet id="main"></ion-router-outlet>
+    <ion-router-outlet id="main2"></ion-router-outlet>
+</ion-app>

@@ -1,0 +1,40 @@
+<ion-content>
+    <ion-grid class="vertical-center">
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-xs="8" size-md="3">
+                <ion-img src="assets/MaqinventLogo2.png"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-xs="12" size-lg="6" size-md="6" class="ion-padding">
+                <form [formGroup]="loginForm">
+                    <ion-list lines="none">
+                        <ion-item>
+                            <ion-icon slot="start" name="person"></ion-icon>
+                            <ion-input formControlName="Usuario" type="email"></ion-input>
+                        </ion-item>
+                        <ng-container *ngFor="let validation of validationMessages.Usuario">
+                            <ion-label class="ion-margin-bottom" color="dark" *ngIf="loginForm.get('Usuario').hasError(validation.type) && (loginForm.get('Usuario').dirty || loginForm.get('Usuario').touched)">
+                                {{ validation.message }}
+                            </ion-label>
+                        </ng-container>
+                        <ion-item class="ion-margin-top">
+                            <ion-icon slot="start" name="key"></ion-icon>
+                            <ion-input formControlName="Password" [type]="isActiveToggleTextPassword ? 'password': 'text'"></ion-input>
+                            <ion-icon slot="end" [name]="isActiveToggleTextPassword ? 'eye-off' : 'eye'" (click)="isActiveToggleTextPassword = !isActiveToggleTextPassword"></ion-icon>
+                        </ion-item>
+                        <ng-container *ngFor="let validation of validationMessages.Password">
+                            <ion-label class="ion-margin-bottom" color="dark" *ngIf="loginForm.get('Password').hasError(validation.type) && (loginForm.get('Password').dirty || loginForm.get('Password').touched)">
+                                {{ validation.message }}
+                            </ion-label>
+                        </ng-container>
+                    </ion-list>
+                    <ion-button [disabled]="!loginForm.valid || pressed" shape="round" expand="block" (click)="login()" color="favorite">
+                        Iniciar sesión
+                        <ion-spinner class="ion-margin-start" [hidden]="!pressed" name="bubbles" color="dark"></ion-spinner>
+                    </ion-button>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

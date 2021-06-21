@@ -1,0 +1,173 @@
+<ion-header>
+    <ion-toolbar color="favorite">
+        <ion-button fill="clear" (click)="openmenu('first')" slot="start" color='dark'>
+            <ion-icon name="menu"></ion-icon>
+        </ion-button>
+        <ion-title>Servicios</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="presentAlert()" color="dark">
+                <ion-icon name="exit"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <ng-container *ngIf="paso">
+        <ion-item>
+            <ion-label class="ion-text-wrap ion-text-center">Presiona la siguiente imagen para leer el código QR de la maquina</ion-label>
+        </ion-item>
+
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="6" class="ion-text-center">
+                <ion-icon name="qr-code" class="qricon" (click)="initscan()"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ng-container>
+
+    <ion-card *ngIf="paso2 || paso3 || paso4 || paso5">
+        <ion-card-header>
+            <ion-card-title>Registro de Servicio</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-label>Clave: {{ codigoequipo }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Nombre: {{ nombreequippo }}</ion-label>
+        </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="paso2">
+        <ion-card-header>
+            <ion-card-title>Paso 1 de 4</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-label position="stacked">Nombre de Servicio:</ion-label>
+            <ion-input [(ngModel)]="nombreMantenimiento" placeholder="Captura un nombre para el servicio"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Centro de Servicio:</ion-label>
+            <ion-select [(ngModel)]="lugar" mode="ios" placeholder="Selecciona un centro de servicio">
+                <ion-select-option *ngFor="let servicio of servicios">{{ servicio }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Tipo de Servicio:</ion-label>
+            <ion-select [(ngModel)]="tipoServicio" mode="ios" placeholder="Selecciona un tipo de servicio">
+                <ion-select-option *ngFor="let servicio of tiposServicios">{{ servicio }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Horómetro:</ion-label>
+            <ion-input type='number' [(ngModel)]="horometromask" (change)="updateQuantity($event.target.value)" placeholder="Captura el horómetro de la maquinaria"></ion-input>
+        </ion-item>
+
+        <ion-grid>
+            <ion-row class="ion-text-center">
+                <ion-col>Medidor de combustible</ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center">
+                <ion-col>
+                    <ion-img [src]="imagen"></ion-img>
+                </ion-col>
+                <ion-col>
+                    <ion-row class='ion-no-padding'>
+                        <ion-col class='ion-no-padding'>
+                            <ion-button color='light' (click)="camimg(1)">
+                                <ion-icon name="arrow-up"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class='ion-no-padding'>
+                        <ion-col class='ion-no-padding'>
+                            <ion-button color='light' (click)="camimg(-1)">
+                                <ion-icon name="arrow-down"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card *ngIf="paso3">
+        <ion-card-header>
+            <ion-card-title>Paso 2 de 4</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-label position="stacked">Número de Parte:</ion-label>
+            <ion-input [(ngModel)]="parte" placeholder="Captura un número de parte"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Descripción:</ion-label>
+            <ion-input [(ngModel)]="consumible" type="text" placeholder="Captura una descripción"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Cantidad:</ion-label>
+            <ion-input [(ngModel)]="cantidad" type="number" placeholder="Captura la cantidad"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Unidad:</ion-label>
+            <ion-select [(ngModel)]="unidad" mode="ios" placeholder="Selecciona una unidad">
+                <ion-select-option>Litros</ion-select-option>
+                <ion-select-option>Piezas</ion-select-option>
+                <ion-select-option>Metros</ion-select-option>
+                <ion-select-option>Cajas</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Precio Unitario:</ion-label>
+            <ion-input [(ngModel)]="pu" type="number" placeholder="Captura el precio unitario"></ion-input>
+        </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="paso4">
+        <ion-row>
+            <ion-col>
+                <ion-card-header>
+                    <ion-card-title>Paso 3 de 4</ion-card-title>
+                </ion-card-header>
+            </ion-col>
+            <ion-col class="ion-text-end">
+                <ion-button (click)="next(3)" color="success">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ngx-datatable class="ion-padding" [rows]="consumibles" [ngClass]="'bootstrap'" [rowHeight]="'auto'" [headerHeight]="50" [columnMode]="'force'">
+            <ngx-datatable-column name="Consumible" sortable="false" prop="consumible"></ngx-datatable-column>
+            <ngx-datatable-column name="Total" sortable="false" prop="totalm"></ngx-datatable-column>
+            <ngx-datatable-column name="Borrar" sortable="false" prop="borrar">
+                <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                    <ion-button color="favorite" (click)="evento(rowIndex)">
+                        <ion-icon name="close"></ion-icon>
+                    </ion-button>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+        <ion-item class="ion-text-end">
+            <ion-label color="dark">Total: {{ subtotal.toFixed(2) | currency:'CAD':'symbol-narrow' }}</ion-label>
+        </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="paso5">
+        <ion-card-header>
+            <ion-card-title>Paso 4 de 4</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-label position="stacked">Observaciones finales:</ion-label>
+            <ion-textarea [(ngModel)]="finales" placeholder="observaciones" rows="3"></ion-textarea>
+        </ion-item>
+        <ion-button color="favorite" expand="block" (click)="agregarf()">Seleccionar Factura</ion-button>
+    </ion-card>
+
+</ion-content>
+<ion-footer no-shadow>
+    <ion-toolbar position="bottom">
+        <ion-button *ngIf="paso2" color="success" expand="block" (click)="next(3, true)">Continuar</ion-button>
+        <ion-button *ngIf="paso3" color="success" expand="block" (click)="next(4)">Continuar</ion-button>
+        <ion-button *ngIf="paso4" color="success" expand="block" (click)="next(5)">Continuar</ion-button>
+        <ion-button *ngIf="paso5" color="success" expand="block" (click)="cerrar()">Finalizar</ion-button>
+    </ion-toolbar>
+</ion-footer>

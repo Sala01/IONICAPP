@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar color="favorite">
+        <ion-button fill="clear" (click)="presentAlert()" slot="end" color='dark'>
+            <ion-icon name="exit"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="openmenu('first')" slot="start" color='dark'>
+            <ion-icon name="menu"></ion-icon>
+        </ion-button>
+        <ion-title color="dark">Maqinvent</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-img class="vertical-center" src="assets/MaqinventLogo2.png"></ion-img>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="favorite">
+        <ion-title color="dark" size="small">{{ name }}</ion-title>
+    </ion-toolbar>
+</ion-footer>
