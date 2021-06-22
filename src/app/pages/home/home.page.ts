@@ -27,7 +27,13 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.usuario =  await this.storage.get('user');
     this.usuario = JSON.parse(this.usuario);
-    this.name = this.usuario.Nombre + ' ' + this.usuario.ApellidoPaterno;
+    if(this.usuario === null){
+      this.name = "Inivitado";
+    }else{
+      this.name = this.usuario.Nombre + ' ' + this.usuario.ApellidoPaterno;
+    }
+
+    
   }
 
   async presentAlert() {
