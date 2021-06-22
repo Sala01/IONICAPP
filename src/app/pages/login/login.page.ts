@@ -50,4 +50,9 @@ export class LoginPage implements OnInit {
     });
   }
 
+  invitado() {
+    this.pressed = true;
+    this.navCtrl.navigateRoot('home');
+  }
+
 }

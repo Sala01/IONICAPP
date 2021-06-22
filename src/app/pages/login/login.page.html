@@ -33,6 +33,10 @@
                         Iniciar sesión
                         <ion-spinner class="ion-margin-start" [hidden]="!pressed" name="bubbles" color="dark"></ion-spinner>
                     </ion-button>
+                    <ion-button [disabled]="!loginForm.valid || pressed" shape="round" expand="block" (click)="invotado()" color="favorite">
+                        Iniciar como invitado
+                        <ion-spinner class="ion-margin-start" [hidden]="!pressed" name="bubbles" color="dark"></ion-spinner>
+                    </ion-button>
                 </form>
             </ion-col>
         </ion-row>
