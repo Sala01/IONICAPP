@@ -54,7 +54,7 @@ export class AppComponent {
         }
       });
 
-      this.requestPushPermission();
+      //this.requestPushPermission();
       this.fcmNotification();
     });
   }
